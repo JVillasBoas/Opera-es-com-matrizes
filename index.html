@@ -9,7 +9,12 @@
     Digite a quantidade de linhas:<input type="number" name="qtd_linhas" id="qtd_linhas">
     Digite a quantidade de colunas:<input type="number" name="qtd_colunas" id="qtd_colunas">
     <br>Digite a matriz:<br><textarea id="matriz_txt" rows="10" cols="70"></textarea>
-    <br><button onclick="operacao()">Efetuar operação</button>
+    <br><button onclick="efetuarOperacao()">Mostrar</button>
+    <div id="msg_erro"></div>
+    <h1>Operações com matrizes</h1>
+    <button onclick="lerMatriz('adicao')">Adição</button>
+    <button onclick="lerMatriz('subtracao')">Subtração</button>
+    <button onclick="lerMatriz('multiplicacao')">Multiplicação</button>
     <div id="matriz_area"></div>
     <style>
        
