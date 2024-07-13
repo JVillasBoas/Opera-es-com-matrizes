@@ -69,14 +69,14 @@ function multiplicacaoMatriz() {
     if(matriz1.coluna != matriz2.linha) {
         document.getElementById("msg_erro").innerHTML = 'Para multiplicar duas matrizes é necessário que a coluna da matriz A seja equivalente a linha da matriz B.';
     } else {
-        console.log(matriz2.linha);
-        console.log(matriz1.coluna);
-        for(l=0;l<matriz2.linha;l++) {
-            matrizResultado[l] = []
-            for(c=0;c<matriz1.coluna;c++) {
-                matrizResultado[l][c] = matriz1.matriz[l][c] * matriz2.matriz[c][l];
+        for(n=0;n<matriz1.linha;n++) {
+            matrizResultado[n] = [];
+            for(l=0;n<matriz2.linha;n++) {
+                matrizResultado[n][l] = 0;
+                for(c=0;c<matriz1.coluna;c++) {
+                    matrizResultado[n][l] += matriz1.matriz[n][c] * matriz2.matriz[c][l];
+                }
             }
-            console.log('for');
         }
         console.log(matrizResultado);
     }
