@@ -42,6 +42,10 @@ function somaMatriz() {
         }
         console.log(matrizResultado);
     }
+    document.getElementById("qtd_linhas").value = matriz1.linha;
+    document.getElementById("qtd_colunas").value = matriz2.coluna;
+    document.getElementById("matriz_txt").value = matrizResultado;
+    matrizesArmazenadas.splice(0,2);
 }
 
 function subtracaoMatriz() {
@@ -60,6 +64,10 @@ function subtracaoMatriz() {
         }
         console.log(matrizResultado);
     }
+    document.getElementById("qtd_linhas").value = matriz1.linha;
+    document.getElementById("qtd_colunas").value = matriz2.coluna;
+    document.getElementById("matriz_txt").value = matrizResultado;
+    matrizesArmazenadas.splice(0,2);
 }
 
 function multiplicacaoMatriz() {
@@ -71,15 +79,20 @@ function multiplicacaoMatriz() {
     } else {
         for(n=0;n<matriz1.linha;n++) {
             matrizResultado[n] = [];
-            for(l=0;n<matriz2.linha;n++) {
+            for(l=0;l<matriz2.coluna;l++) {
                 matrizResultado[n][l] = 0;
                 for(c=0;c<matriz1.coluna;c++) {
                     matrizResultado[n][l] += matriz1.matriz[n][c] * matriz2.matriz[c][l];
+                    console.log(matriz1.matriz[n][c] + " * " + matriz2.matriz[c][l] + " = " + matrizResultado[n][l]);
                 }
             }
         }
         console.log(matrizResultado);
     }
+    document.getElementById("qtd_linhas").value = matriz1.linha;
+    document.getElementById("qtd_colunas").value = matriz2.coluna;
+    document.getElementById("matriz_txt").value = matrizResultado;
+    matrizesArmazenadas.splice(0,2);
 }
 
 function efetuarOperacao() {
