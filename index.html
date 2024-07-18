@@ -3,22 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<header>
+    <nav>
+        <div id="logo">
+            <img src="imagens/imagem_2024-07-17_211528144-removebg-preview.png" alt="">
+        </div>
+        <ul>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="#">Operações</a></li>
+          <li><a href="#">Tipos</a></li>
+        </ul>
+    </nav>
+</header>
 <body>
-    Digite a quantidade de linhas:<input type="number" name="qtd_linhas" id="qtd_linhas">
-    Digite a quantidade de colunas:<input type="number" name="qtd_colunas" id="qtd_colunas">
-    <br>Digite a matriz:<br><textarea id="matriz_txt" rows="10" cols="70"></textarea>
-    <br><button onclick="efetuarOperacao()">Mostrar</button>
-    <div id="msg_erro"></div>
-    <h1>Operações com matrizes</h1>
-    <button onclick="lerMatriz('adicao')">Adição</button>
-    <button onclick="lerMatriz('subtracao')">Subtração</button>
-    <button onclick="lerMatriz('multiplicacao')">Multiplicação</button>
-    <div id="matriz_area"></div>
-    <style>
-       
-    </style>
-    <script src="code.js"></script>
+    <div id="texto_matrizes">
+        <h1>Matrizes</h1>
+        <p>
+            Na matemática, uma matriz é uma tabela bidimensional de números dispostos em linhas e colunas. Cada número na matriz é 
+            chamado de elemento ou entrada. As matrizes são usadas para representar e resolver sistemas de equações lineares, 
+            transformações lineares, e em muitas outras aplicações em diversas áreas como física, engenharia, economia e ciência da computação.
+        </p>
+        <p id="texto_matrizes2">
+            <li>Sistemas de Equações Lineares: As matrizes podem representar sistemas de equações, facilitando sua resolução por métodos como eliminação de Gauss.</li>
+            <li>Transformações Lineares: Em geometria analítica, matrizes são usadas para descrever rotações, translações e outras transformações de figuras.</li>
+            <li>Análise de Dados: Em estatística e aprendizado de máquina, matrizes são utilizadas para representar e manipular conjuntos de dados.</li>
+            <li>Física e Engenharia: Matrizes são fundamentais para a descrição de sistemas físicos e a solução de problemas de engenharia.</li>
+        </p>
+        <p>As matrizes são uma ferramenta poderosa e versátil na matemática, fornecendo uma linguagem e métodos eficientes para uma vasta gama de problemas e aplicações.</p>
+    </div>
+
+    <div id="texto_tipos">
+        <h1>Tipos de matrizes</h1>
+        <p>
+            Na matemática, uma matriz é uma tabela retangular de números organizada em linhas e colunas. Cada número dentro dessa tabela 
+            é chamado de elemento. A matriz é representada geralmente por uma letra maiúscula, como "A", e seus elementos são denotados por 
+            uma letra minúscula com dois índices, como "aij", onde "i" indica a linha e "j" a coluna.
+        </p>
+        <p id="texto_matrizes2">
+            <li>Matriz Quadrada: Tem o mesmo número de linhas e colunas</li>
+            <li>Matriz Diagonal: É uma matriz quadrada onde todos os elementos fora da diagonal principal são zero.</li>
+            <li>Matriz Identidade: Uma matriz diagonal onde todos os elementos da diagonal principal são 1.</li>
+            <li>Matriz Transposta: Obtida ao trocar as linhas pelas colunas da matriz original.</li>
+            <li>Matriz Simétrica: Uma matriz que é igual à sua transposta</li>
+            <li>Matriz Nula: Todos os elementos são zero.</li>
+        </p>
+    </div>
+
+    <div id="texto_op">
+        <h1>Operações de matrizes</h1>
+        <p>
+            Essas operações incluem adição, subtração, multiplicação por escalar, transposição e multiplicação de matrizes, 
+            cada uma com suas próprias regras e propriedades específicas. Elas permitem a manipulação e a transformação de dados 
+            organizados em tabelas, facilitando a resolução de sistemas de equações lineares, a realização de transformações 
+            geométricas e a análise de estruturas complexas em diversas disciplinas. Compreender essas operações é 
+            essencial para o desenvolvimento de habilidades avançadas em matemática aplicada e teórica.
+        </p>
+        <p id="texto_matrizes2">
+            <li>Adição e Subtração: Para somar ou subtrair duas matrizes, elas devem ter a mesma dimensão. A adição (ou subtração) é feita elemento a elemento.</li>
+            <li>Multiplicação por um Escalar: Multiplicar uma matriz por um número (escalar) significa multiplicar cada elemento da matriz por esse número.</li>
+            <li>A multiplicação de matrizes é uma operação que combina duas matrizes para produzir uma terceira matriz. Para que a multiplicação de duas matrizes seja possível, o número de colunas da primeira matriz deve ser igual ao número de linhas da segunda matriz.</li>
+        </p>
+    </div>
 </body>
 </html>

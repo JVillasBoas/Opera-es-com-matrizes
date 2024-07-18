@@ -18,7 +18,7 @@ function lerMatriz(operacao) {
             matriz_txt.shift();
         }
     }
-
+    document.getElementById("msg_erro").innerHTML = 'Matriz lida com sucesso! 😁';
     console.log(matrizLocal);
     matrizesArmazenadas.push({matriz: matrizLocal, linha: qtd_linhas, coluna: qtd_colunas});
     if(operacao != '0') {
@@ -31,7 +31,7 @@ function somaMatriz() {
     var matriz2 = matrizesArmazenadas[1];
     matrizResultado = [];
     if(matriz1.linha != matriz2.linha || matriz1.coluna != matriz2.coluna){
-        document.getElementById("msg_erro").innerHTML = 'Matrizes de tamanhos diferentes não são possíveis de somar.';
+        document.getElementById("msg_erro").innerHTML = 'Matrizes de tamanhos diferentes não são possíveis de somar. 😢';
     } else {
         for(l=0;l<matriz1.linha;l++){
             matrizResultado[l] = []
@@ -45,6 +45,7 @@ function somaMatriz() {
     document.getElementById("qtd_linhas").value = matriz1.linha;
     document.getElementById("qtd_colunas").value = matriz2.coluna;
     document.getElementById("matriz_txt").value = matrizResultado;
+    document.getElementById("msg_erro").innerHTML = 'Operação de adição realizada com sucesso! 😁';
     matrizesArmazenadas.splice(0,2);
 }
 
@@ -53,7 +54,7 @@ function subtracaoMatriz() {
     var matriz2 = matrizesArmazenadas[1];
     matrizResultado = [];
     if(matriz1.linha != matriz2.linha || matriz1.coluna != matriz2.coluna){
-        document.getElementById("msg_erro").innerHTML = 'Matrizes de tamanhos diferentes não são possíveis de subtrair.';
+        document.getElementById("msg_erro").innerHTML = 'Matrizes de tamanhos diferentes não são possíveis de subtrair. 😢';
     } else {
         for(l=0;l<matriz1.linha;l++){
             matrizResultado[l] = []
@@ -67,6 +68,7 @@ function subtracaoMatriz() {
     document.getElementById("qtd_linhas").value = matriz1.linha;
     document.getElementById("qtd_colunas").value = matriz2.coluna;
     document.getElementById("matriz_txt").value = matrizResultado;
+    document.getElementById("msg_erro").innerHTML = 'Operação de subtração realizada com sucesso! 😁';
     matrizesArmazenadas.splice(0,2);
 }
 
@@ -75,7 +77,7 @@ function multiplicacaoMatriz() {
     var matriz2 = matrizesArmazenadas[1];
     matrizResultado = []
     if(matriz1.coluna != matriz2.linha) {
-        document.getElementById("msg_erro").innerHTML = 'Para multiplicar duas matrizes é necessário que a coluna da matriz A seja equivalente a linha da matriz B.';
+        document.getElementById("msg_erro").innerHTML = 'Para multiplicar duas matrizes é necessário que a coluna da matriz A seja equivalente a linha da matriz B. 😢';
     } else {
         for(n=0;n<matriz1.linha;n++) {
             matrizResultado[n] = [];
@@ -92,6 +94,7 @@ function multiplicacaoMatriz() {
     document.getElementById("qtd_linhas").value = matriz1.linha;
     document.getElementById("qtd_colunas").value = matriz2.coluna;
     document.getElementById("matriz_txt").value = matrizResultado;
+    document.getElementById("msg_erro").innerHTML = 'Operação de multiplicação realizada com sucesso!';
     matrizesArmazenadas.splice(0,2);
 }
 

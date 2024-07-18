@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fcfce2;
+
+}
+
+img {
+    width: 100%;
+    height: 100%;
+
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    background-color: #c5dfe0;
+    width: 100%;
+}
+
+ul > li {
+    list-style-type: none;
+  }
+
+#logo {
+    width: 6%;
+    margin-left: 2%;
+}
+
+ul {
+    width: 90%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #f87e7b;
+    font-weight: bold;
+}
+
+#texto_matrizes, #texto_tipos, #texto_op{
+    margin: 1%;
+}
+
+#texto_matrizes > h1, #texto_tipos > h1, #texto_op > h1 {
+    text-align: center;
+    color: #f87e7b;
+}
+
+h3 {
+    color: #f87e7b; 
+}
+
+#texto_matrizes2 {
+    display: flex;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 1%;
+    margin: 1%;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+#botao_mostrar {
+    background-color: #f87e7b;
+}
+
+#botao_add {
+    background-color: #cad5ad;
+}
+
+#botao_sub {
+    background-color: #f99fa9;
+}
+
+#botao_mult {
+    background-color: #5e9fa3;
+}
+
+#botao_trans {
+    background-color: #f40e7a;
+}
+
+#botao_inv {
+    background-color: #fca451;
+}
+
+#botao_oposta {
+    background-color: #d3d4fe;
+}
+
+#botoes_tipos, #botoes_ops {
+    background-color: white;
+    border-radius: 4px;
+    width: 25%;
+    height: 40%;
+    padding: 1%;
+    
+}
+
+#botoes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+#inputs {
+    margin: 2%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+    
