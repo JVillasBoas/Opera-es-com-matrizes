@@ -7,6 +7,7 @@ function lerMatriz(operacao) {
     var qtd_colunas = document.getElementById("qtd_colunas").value;
     var qtd_linhas = document.getElementById("qtd_linhas").value;
     var matriz_txt = document.getElementById("matriz_txt").value;
+    console.log(matriz_txt)
     matriz_txt = matriz_txt.replace("\n", "");
     matriz_txt = matriz_txt.split(",");
     var matrizLocal = [];
@@ -29,6 +30,7 @@ function lerMatriz(operacao) {
 function somaMatriz() {
     var matriz1 = matrizesArmazenadas[0];
     var matriz2 = matrizesArmazenadas[1];
+    var matrizResultadoTxt = "";
     matrizResultado = [];
     if(matriz1.linha != matriz2.linha || matriz1.coluna != matriz2.coluna){
         document.getElementById("msg_erro").innerHTML = 'Matrizes de tamanhos diferentes não são possíveis de somar. 😢';
@@ -39,12 +41,13 @@ function somaMatriz() {
                 matrizResultado[l][c] = matriz1.matriz[l][c] + matriz2.matriz[l][c];
                 //console.log(matriz1.matriz[l][c] + " + " + matriz2.matriz[l][c] + " = " + matrizResultado[l][c]);
             }
+            matrizResultadoTxt += matrizResultado[l] + "\n";
         }
         console.log(matrizResultado);
     }
     document.getElementById("qtd_linhas").value = matriz1.linha;
     document.getElementById("qtd_colunas").value = matriz2.coluna;
-    document.getElementById("matriz_txt").value = matrizResultado;
+    document.getElementById("matriz_txt").value = matrizResultadoTxt;
     document.getElementById("msg_erro").innerHTML = 'Operação de adição realizada com sucesso! 😁';
     matrizesArmazenadas.splice(0,2);
 }
@@ -52,6 +55,7 @@ function somaMatriz() {
 function subtracaoMatriz() {
     var matriz1 = matrizesArmazenadas[0];
     var matriz2 = matrizesArmazenadas[1];
+    var matrizResultadoTxt = "";
     matrizResultado = [];
     if(matriz1.linha != matriz2.linha || matriz1.coluna != matriz2.coluna){
         document.getElementById("msg_erro").innerHTML = 'Matrizes de tamanhos diferentes não são possíveis de subtrair. 😢';
@@ -62,12 +66,13 @@ function subtracaoMatriz() {
                 matrizResultado[l][c] = matriz1.matriz[l][c] - matriz2.matriz[l][c];
                 //console.log(matriz1.matriz[l][c] + " + " + matriz2.matriz[l][c] + " = " + matrizResultado[l][c]);
             }
+            matrizResultadoTxt += matrizResultado[l] + "\n";
         }
         console.log(matrizResultado);
     }
     document.getElementById("qtd_linhas").value = matriz1.linha;
     document.getElementById("qtd_colunas").value = matriz2.coluna;
-    document.getElementById("matriz_txt").value = matrizResultado;
+    document.getElementById("matriz_txt").value = matrizResultadoTxt;
     document.getElementById("msg_erro").innerHTML = 'Operação de subtração realizada com sucesso! 😁';
     matrizesArmazenadas.splice(0,2);
 }
@@ -75,7 +80,8 @@ function subtracaoMatriz() {
 function multiplicacaoMatriz() {
     var matriz1 = matrizesArmazenadas[0];
     var matriz2 = matrizesArmazenadas[1];
-    matrizResultado = []
+    matrizResultado = [];
+    var matrizResultadoTxt = "";
     if(matriz1.coluna != matriz2.linha) {
         document.getElementById("msg_erro").innerHTML = 'Para multiplicar duas matrizes é necessário que a coluna da matriz A seja equivalente a linha da matriz B. 😢';
     } else {
@@ -85,30 +91,103 @@ function multiplicacaoMatriz() {
                 matrizResultado[n][l] = 0;
                 for(c=0;c<matriz1.coluna;c++) {
                     matrizResultado[n][l] += matriz1.matriz[n][c] * matriz2.matriz[c][l];
-                    console.log(matriz1.matriz[n][c] + " * " + matriz2.matriz[c][l] + " = " + matrizResultado[n][l]);
+                    //console.log(matriz1.matriz[n][c] + " * " + matriz2.matriz[c][l] + " = " + matrizResultado[n][l]);
                 }
             }
+            matrizResultadoTxt += matrizResultado[n] + "\n";
         }
         console.log(matrizResultado);
     }
     document.getElementById("qtd_linhas").value = matriz1.linha;
     document.getElementById("qtd_colunas").value = matriz2.coluna;
-    document.getElementById("matriz_txt").value = matrizResultado;
+    document.getElementById("matriz_txt").value = matrizResultadoTxt;
     document.getElementById("msg_erro").innerHTML = 'Operação de multiplicação realizada com sucesso!';
     matrizesArmazenadas.splice(0,2);
 }
 
+function opostaMatriz() {
+    var matrizResultadoTxt = "";
+    var matriz = matrizesArmazenadas[0];
+    matrizResultado = [];
+    for(l=0;l<matriz.linha;l++) {
+        matrizResultado[l] = [];
+        for(c=0;c<matriz.coluna;c++) {
+            matrizResultado[l][c] = matriz.matriz[l][c] * (-1);
+            matrizResultadoTxt += matrizResultado[l][c] + ",";
+        }
+        matrizResultadoTxt += "\n";
+    }
+    document.getElementById("matriz_txt").value = matrizResultadoTxt;
+    document.getElementById("msg_erro").innerHTML = 'Operação de oposta realizada com sucesso! 😁';
+    matrizesArmazenadas.splice(0,2);
+}
+
+function transpostaMatriz() {
+    var matriz = matrizesArmazenadas[0];
+    var matrizResultadoTxt = "";
+    matrizResultado = [];
+    for(l=0;l<matriz.coluna;l++) {
+        matrizResultado[l] = [];
+        for(c=0;c<matriz.linha;c++) {
+            matrizResultado[l][c] = matriz.matriz[c][l];
+            matrizResultadoTxt += matrizResultado[l][c] + ",";
+        }
+        matrizResultadoTxt += "\n";
+    }
+    document.getElementById("matriz_txt").value = matrizResultadoTxt;
+    document.getElementById("msg_erro").innerHTML = 'Operação de transposta realizada com sucesso! 😁';
+    matrizesArmazenadas.splice(0,2);
+}
+
+function identidadeMatriz() {
+    var qtd_linhas = document.getElementById("qtd_linhas").value;
+    var qtd_colunas = document.getElementById("qtd_colunas").value;
+    var matrizResultadoTxt = "";
+    matrizResultado = [];
+    if(qtd_linhas == qtd_colunas) {
+        for(l=0;l<qtd_linhas;l++) {
+            matrizResultado[l] = [];
+            for(c=0;c<qtd_colunas;c++) {
+                if(l == c) {
+                    matrizResultado[l][c] = 1;
+                } else {
+                    matrizResultado[l][c] = 0;
+                }
+                matrizResultadoTxt += matrizResultado[l][c] + ",";
+            }
+            matrizResultadoTxt += "\n";
+        }
+        document.getElementById("matriz_txt").value = matrizResultadoTxt;
+        document.getElementById("msg_erro").innerHTML = 'Matriz identidade gerada com sucesso! 😁';
+    } else {
+        document.getElementById("msg_erro").innerHTML = 'Matriz identidade só pode ser gerada para matrizes quadradas. 😢';
+    }
+}
+
+
+
+
+
 function efetuarOperacao() {
-    lerMatriz('0');
     switch(operacoesArmazenadas[contador]){
         case "adicao":
+            lerMatriz('0');
             somaMatriz();
             break;
         case "subtracao":
+            lerMatriz('0');
             subtracaoMatriz();
             break;
         case "multiplicacao":
+            lerMatriz('0');
             multiplicacaoMatriz();
+            break;
+        case "oposta":
+            opostaMatriz();
+            break;
+        case "transposta":
+            transpostaMatriz();
+            break;
         // default:
         //     document.getElementById("msg_erro").innerHTML = 'Operação não selecionada. Selecione-a ou clique em <a href="url">Manual de instruções</a>';
     }

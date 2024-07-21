@@ -96,6 +96,10 @@ button {
     background-color: #d3d4fe;
 }
 
+#botao_identidade {
+    background-color: #62d1e7;
+}
+
 #botoes_tipos, #botoes_ops {
     background-color: white;
     border-radius: 4px;
