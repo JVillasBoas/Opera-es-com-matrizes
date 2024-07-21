@@ -109,6 +109,20 @@ button {
     
 }
 
+#exemploMatriz {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 1%;
+    margin-left: 42%;
+    background-color: white;
+    border-radius: 4px;
+    width: 8%;
+    height: 8%;
+    padding: 1%
+}
+
 #botoes {
     display: flex;
     flex-direction: row;
