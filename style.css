@@ -100,6 +100,10 @@ button {
     background-color: #62d1e7;
 }
 
+#botao_determinante {
+    background-color: #52ec61;
+}
+
 #botoes_tipos, #botoes_ops {
     background-color: white;
     border-radius: 4px;

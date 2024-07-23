@@ -164,7 +164,87 @@ function identidadeMatriz() {
     }
 }
 
+function determinante(matriz, ordem) {
+    det = 0;
+    var diagonal1 = 1
+    var diagonal2 = 1
+    if(ordem == 1) {
+        det = matriz.matriz[0][0];
+    } else if(ordem == 2) {
+        console.log('for')
+        for(l=0;l<ordem;l++) {
+            for(c=0;c<ordem;c++) {
+                if(c == l) {
+                    diagonal1 *= matriz.matriz[l][c];
+                } else {
+                    diagonal2 *= matriz.matriz[l][c];
+                }
+            }
+        }
+        det = diagonal1 - diagonal2;
+    } else if (ordem == 3) {
+        for(i=0;i<ordem;i++) {
+            diagonal1 += (matriz.matriz[0][(0+i)%3] * matriz.matriz[1][(1+i)%3] * matriz.matriz[2][(2+i)%3]);
+            diagonal2 += (matriz.matriz[0][(2+i)%3] * matriz.matriz[1][(1+i)%3] * matriz.matriz[2][(0+i)%3]);
+        }
+        det = diagonal1 - diagonal2
+    }
+    return det;
+}
 
+function adjunta(matriz, ordem) {
+    var adjuntaMatriz = [];
+    if (ordem == 2) {
+        adjuntaMatriz[0] = [];
+        adjuntaMatriz[1] = [];
+        adjuntaMatriz[0][0] = matriz.matriz[1][1];
+        adjuntaMatriz[1][0] = -matriz.matriz[0][1];
+        adjuntaMatriz[0][1] = -matriz.matriz[1][0];
+        adjuntaMatriz[1][1] = matriz.matriz[0][0];
+    } else if (ordem == 3) {
+        console.log('teste ordem 3');
+        adjuntaMatriz[0] = [];
+        adjuntaMatriz[1] = [];
+        adjuntaMatriz[2] = [];
+        adjuntaMatriz[0][0] = matriz.matriz[1][1] * matriz.matriz[2][2] - matriz.matriz[1][2] * matriz.matriz[2][1];
+        adjuntaMatriz[1][0] = -(matriz.matriz[1][0] * matriz.matriz[2][2] - matriz.matriz[1][2] * matriz.matriz[2][0]);
+        adjuntaMatriz[2][0] = matriz.matriz[1][0] * matriz.matriz[2][1] - matriz.matriz[1][1] * matriz.matriz[2][0];
+        adjuntaMatriz[0][1] = -(matriz.matriz[0][1] * matriz.matriz[2][2] - matriz.matriz[0][2] * matriz.matriz[2][1]);
+        adjuntaMatriz[1][1] = matriz.matriz[0][0] * matriz.matriz[2][2] - matriz.matriz[0][2] * matriz.matriz[2][0];
+        adjuntaMatriz[2][1] = -(matriz.matriz[0][0] * matriz.matriz[2][1] - matriz.matriz[0][1] * matriz.matriz[2][0]);
+        adjuntaMatriz[0][2] = matriz.matriz[0][1] * matriz.matriz[1][2] - matriz.matriz[0][2] * matriz.matriz[1][1];
+        adjuntaMatriz[1][2] = -(matriz.matriz[0][0] * matriz.matriz[1][2] - matriz.matriz[0][2] * matriz.matriz[1][0]);
+        adjuntaMatriz[2][2] = matriz.matriz[0][0] * matriz.matriz[1][1] - matriz.matriz[0][1] * matriz.matriz[1][0];
+    }
+    return adjuntaMatriz;
+}
+
+function inverteMatriz() {
+    var matriz = matrizesArmazenadas[0];
+    var matrizResultadoTxt = "";
+    matrizResultado = [];
+    if(matriz.linha != matriz.coluna) {
+        document.getElementById("msg_erro").innerHTML = 'Matriz não é quadrada, não é possível inverter. 😢';
+    } else {
+        var det = determinante(matriz, matriz.linha);
+        if(det == 0) {
+            document.getElementById("msg_erro").innerHTML = 'Matriz não pode ser invertida, determinante igual a zero. 😢';
+        } else {
+            var adj = adjunta(matriz, matriz.linha);
+            for(l=0;l<matriz.linha;l++) {
+                matrizResultado[l] = [];
+                for(c=0;c<matriz.coluna;c++) {
+                    matrizResultado[l][c] = adj[l][c] / det;
+                    matrizResultadoTxt += matrizResultado[l][c] + ",";
+                }
+                matrizResultadoTxt += "\n";
+            }
+            document.getElementById("matriz_txt").value = matrizResultadoTxt;
+            document.getElementById("msg_erro").innerHTML = 'Matriz invertida com sucesso! 😁';
+        }
+    }
+    matrizesArmazenadas.splice(0,2);
+}
 
 
 
@@ -187,6 +267,20 @@ function efetuarOperacao() {
             break;
         case "transposta":
             transpostaMatriz();
+            break;
+        case "determinante":
+            lerMatriz('0');
+            if (document.getElementById("qtd_colunas").value == document.getElementById("qtd_linhas").value & document.getElementById("qtd_linhas").value > 0 & document.getElementById("qtd_linhas").value < 4) {
+                determinante(matrizesArmazenadas[0], document.getElementById("qtd_colunas").value);
+                document.getElementById("matriz_txt").value = det;
+                document.getElementById("msg_erro").innerHTML = 'Determinante gerada com sucesso! 😁';
+            } else {
+                document.getElementById("msg_erro").innerHTML = 'A determinante da matriz só pode ser gerada para matrizes quadradas e neste site de ordem dois ou três. 😢';
+            }
+            matrizesArmazenadas.splice(0,2);
+            break;
+        case "inversa":
+            inverteMatriz();
             break;
         // default:
         //     document.getElementById("msg_erro").innerHTML = 'Operação não selecionada. Selecione-a ou clique em <a href="url">Manual de instruções</a>';
